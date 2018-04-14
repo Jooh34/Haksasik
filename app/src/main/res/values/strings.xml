@@ -13,4 +13,40 @@
     <string name="dinner">저녁</string>
 
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="info_dialog_title">강원학사 식단 앱 정보</string>
+    <string name="info_dialog_contents">
+        \n
+        제작자 : 남중혁 \n
+        (2015~2016 : 가산 501호, 2017 : 가산 401호) \n
+        현재 휴학 중 \n
+        \n
+        \n
+        앱 로고나 내부 디자인 도와주실 분 구합니다... \n
+        \n
+        ---------------------------------------- \n
+        Opensource License \n
+        \n
+        - Volley \n
+        https://github.com/google/volley \n
+        \n
+        -Circle Indicator \n
+        https://github.com/ongakuer/CircleIndicator \n
+        \n
+        Copyright [2018] [Jooh] \n
+        \n
+        Licensed under the Apache License, Version 2.0 (the "License");\n
+        you may not use this file except in compliance with the License.\n
+        You may obtain a copy of the License at\n
+        \n
+            http://www.apache.org/licenses/LICENSE-2.0\n
+        \n
+        Unless required by applicable law or agreed to in writing, software\n
+        distributed under the License is distributed on an "AS IS" BASIS,\n
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n
+        See the License for the specific language governing permissions and\n
+        limitations under the License.\n
+        \n
+        ------------------------------------------\n
+    </string>
 </resources>

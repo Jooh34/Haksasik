@@ -69,11 +69,26 @@
             </android.support.design.widget.TabLayout>
         </android.support.design.widget.AppBarLayout>
 
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/indicator"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            app:ci_drawable="@drawable/circleindicator_on"/>
+            android:layout_height="40dp">
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:ci_drawable="@drawable/circleindicator_on"/>
+
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/info_button"
+                android:background="@null"/>
+
+        </RelativeLayout>
 
         <com.example.mnh51.haksasik.day_tab.SectionViewPager
             android:id="@+id/container"

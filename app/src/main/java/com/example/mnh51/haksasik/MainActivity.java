@@ -1,7 +1,10 @@
 package com.example.mnh51.haksasik;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 
@@ -9,6 +12,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.mnh51.haksasik.day_tab.SectionViewPager;
 import com.example.mnh51.haksasik.day_tab.SectionsPagerAdapter;
@@ -48,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageButton imageButton = findViewById(R.id.info_button);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showInfoDialog();
+            }
+        });
 
         // progress dialog
         loadingDialog = new ProgressDialog(this);
@@ -58,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
         loadingDialog.show();
         //
 
+        downloadMenu();
+    }
+
+    public void downloadMenu() {
         requestcount = 0;
         Downloader downloader = new Downloader(this);
         downloader.updateData(new UpdateCallback(){
@@ -65,14 +82,12 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(String response, int requestType) {
                 if(requestType == REQUEST_MENU) {
                     menuJSON = response;
-                    Log.e("menuJSON", menuJSON);
                     requestcount++;
 
                     if(requestcount == 2) appStart();
                 }
                 else {
                     dateJSON = response;
-                    Log.e("dateJSON", dateJSON);
                     requestcount++;
 
                     if(requestcount == 2) appStart();
@@ -106,6 +121,23 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+    }
+
+    public void showInfoDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+        builder.setTitle(getResources().getString(R.string.info_dialog_title));
+        builder.setMessage(getResources().getString(R.string.info_dialog_contents));
+        builder.setPositiveButton("확인",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        AlertDialog dialog = builder.show();
+
+        TextView messageView = (TextView) dialog.findViewById(android.R.id.message);
+        messageView.setTextSize(10);
     }
 
     /**
