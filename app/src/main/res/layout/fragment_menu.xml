@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,22 +11,93 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/breakfast"
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="breakfast" />
+            android:gravity="center"
+            android:fontFamily="@font/binggrae_bold"
+            android:text="date" />
 
-        <TextView
-            android:id="@+id/lunch"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="lunch"/>
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:weightSum="3"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/dinner"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="@string/breakfast"
+                android:fontFamily="@font/binggrae_bold"
+                android:gravity="center"
+                android:background="@drawable/menu_background"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="@string/lunch"
+                android:fontFamily="@font/binggrae_bold"
+                android:gravity="center"
+                android:background="@drawable/menu_background"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="@string/dinner"
+                android:fontFamily="@font/binggrae_bold"
+                android:gravity="center"
+                android:background="@drawable/menu_background"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="dinner" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/breakfast"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="breakfast"
+                android:fontFamily="@font/binggrae"
+                android:textAlignment="center"
+                android:background="@drawable/menu_background"/>
+
+            <TextView
+                android:id="@+id/lunch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="lunch"
+                android:fontFamily="@font/binggrae"
+                android:textAlignment="center"
+                android:background="@drawable/menu_background"/>
+
+            <TextView
+                android:id="@+id/dinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="dinner"
+                android:fontFamily="@font/binggrae"
+                android:textAlignment="center"
+                android:background="@drawable/menu_background"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

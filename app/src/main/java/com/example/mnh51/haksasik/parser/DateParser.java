@@ -20,7 +20,7 @@ public class DateParser {
 
     String dateJSON;
 
-    public DateParser(String menuJSON) {
+    public DateParser(String dateJSON) {
         this.dateJSON = dateJSON;
     }
 
@@ -45,5 +45,7 @@ public class DateParser {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        return "";
     }
 }

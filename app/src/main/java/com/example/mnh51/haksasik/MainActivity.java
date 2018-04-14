@@ -1,18 +1,20 @@
 package com.example.mnh51.haksasik;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
-   
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+
+import com.example.mnh51.haksasik.day_tab.SectionViewPager;
+import com.example.mnh51.haksasik.day_tab.SectionsPagerAdapter;
+import com.example.mnh51.haksasik.download.Downloader;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
+    private SectionViewPager mViewPager;
 
     private static final int REQUEST_MENU = 100;
     private static final int REQUEST_DATE = 101;
@@ -92,87 +94,25 @@ public class MainActivity extends AppCompatActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), menuJSON, dateJSON);
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = (SectionViewPager) findViewById(R.id.container);
+        mViewPager.setSwipeable(true);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(mViewPager);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
     }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        String menuJSON;
-        String dateJSON;
-
-        public SectionsPagerAdapter(FragmentManager fm, String menuJSON, String dateJSON) {
-            super(fm);
-            this.menuJSON = menuJSON;
-            this.dateJSON = dateJSON;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position, menuJSON, dateJSON);
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 7;
-        }
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-        private static final String ARG_MENU_JSON = "menu_json";
-        private static final String ARG_DATE_JSON = "date_json";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber, String menuJSON, String dateJSON) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            args.putString(ARG_MENU_JSON, menuJSON);
-            args.putString(ARG_DATE_JSON, dateJSON);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-
-            MenuViewManager mvm = new MenuViewManager(inflater,
-                    container,
-                    getArguments().getInt(ARG_SECTION_NUMBER),
-                    getArguments().getString(ARG_MENU_JSON),
-                    getArguments().getString(ARG_DATE_JSON)
-            );
-
-            return mvm.getRootView();
-        }
-    }
 
     public interface UpdateCallback {
         void onSuccess(String response, int requestType);
