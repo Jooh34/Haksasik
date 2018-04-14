@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">haksasik</string>
+    <string name="app_name">강원학사 식단</string>
     <string name="tab_text_1">일</string>
     <string name="tab_text_2">월</string>
     <string name="tab_text_3">화</string>
@@ -22,7 +22,7 @@
         현재 휴학 중 \n
         \n
         \n
-        앱 로고나 내부 디자인 도와주실 분 구합니다... \n
+        앱 로고 디자인 도와주실 분 구합니다... \n
         \n
         ---------------------------------------- \n
         Opensource License \n

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.mnh51.haksasik.MainActivity">
+    tools:context="com.jooh.mnh51.haksasik.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -90,7 +90,7 @@
 
         </RelativeLayout>
 
-        <com.example.mnh51.haksasik.day_tab.SectionViewPager
+        <com.jooh.mnh51.haksasik.day_tab.SectionViewPager
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
